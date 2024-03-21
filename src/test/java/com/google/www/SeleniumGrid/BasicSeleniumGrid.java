@@ -15,16 +15,17 @@ public class BasicSeleniumGrid {
 
 		// 1 - Set the desired Caps
 		DesiredCapabilities cap = new DesiredCapabilities();
-		cap.setBrowserName("firefox");
+		cap.setBrowserName("chrome");
 		cap.setPlatform(Platform.WINDOWS);
 
 		// 2 - Pass the capability to chrome options
 		ChromeOptions options = new ChromeOptions();
 		//options.setHeadless(true);
+		options.addArguments("--incognito");
 		options.merge(cap);
 
 		// Hub URL u want to connect
-		String hubURL = "http://10.0.0.130:4444/wd/hub";
+		String hubURL = "http://192.168.99.1:4444/wd/hub";
 		
 		//WebDriver driver=new ChromeDriver();
 		
