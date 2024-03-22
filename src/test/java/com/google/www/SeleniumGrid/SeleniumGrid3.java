@@ -29,50 +29,55 @@ public class SeleniumGrid3 {
 		ChromeOptions options = new ChromeOptions();
 		options.merge(cap);
 
-		String hubURL = "http://10.0.0.130:4444/wd/hub";
+		String hubURL = "http://192.168.99.1:4444/wd/hub";
 		wd.set(new RemoteWebDriver(new URL(hubURL), options));
 
 	}
 
 	@Test()
 	public void getTitleOfGoogle() throws InterruptedException {
-		wd.get().get("https://www.google.com/");
+		getThreadSafeCopyOfWebdriver().get("https://www.google.com/");
 		Thread.sleep(5000);
 		System.out.println(wd.get().getTitle());
 	}
 
 	@Test
 	public void getTitleOfAutomationPractise() throws InterruptedException {
-		wd.get().get("http://automationpractice.com/index.php");
+		getThreadSafeCopyOfWebdriver().get("http://automationpractice.com/index.php");
 		Thread.sleep(5000);
 		System.out.println(wd.get().getTitle());
 	}
 
 	@Test
 	public void getTitleOfDemoQa() throws InterruptedException {
-		wd.get().get("https://demoqa.com/automation-practice-form");
+		getThreadSafeCopyOfWebdriver().get("https://demoqa.com/automation-practice-form");
 		Thread.sleep(5000);
 		System.out.println(wd.get().getTitle());
 	}
 
 	@Test
 	public void getTitleOfPhpTravel() throws InterruptedException {
-		wd.get().get("https://www.phptravels.net/");
+		getThreadSafeCopyOfWebdriver().get("https://www.phptravels.net/");
 		Thread.sleep(5000);
 		System.out.println(wd.get().getTitle());
 	}
 	
 	@Test
 	public void getTitleOfParaBank() throws InterruptedException {
-		wd.get().get("https://parabank.parasoft.com/parabank/register.htm");
+		getThreadSafeCopyOfWebdriver().get("https://parabank.parasoft.com/parabank/register.htm");
 		Thread.sleep(5000);
 		System.out.println(wd.get().getTitle());
 	}
 
 	@AfterMethod
 	public void tearDown() {
-		wd.get().quit();
+		getThreadSafeCopyOfWebdriver().quit();
 
+	}
+	
+	public WebDriver getThreadSafeCopyOfWebdriver() {
+		return wd.get();
+				
 	}
 
 }
